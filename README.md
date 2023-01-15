@@ -3,6 +3,13 @@
 *"Salvar vidas e cuidar das pessoas porque elas não podem esperar nas filas da saúde."*
 Conheça: www.drconsulta.com
 
+## Informações importantes sobre o projeto
+O projeto foi construido com base no framework NestJS além disso foi utilizado algumas bibliotecas para facilitar e dinamizar o desenvolvimento.
+
+Para configurações de variaveis de ambiente utilei o [Configuration](https://docs.nestjs.com/techniques/configuration#configuration) Ele é utilizado para fazer a leitura de um arquivo de configuração na raiz do projeto no formator de .env ou yaml (o escolhido para este projeto foi .env)
+
+Para conexão com banco foi utilizado o [TypeORM](https://docs.nestjs.com/recipes/sql-typeorm) conectando em um banco MySQL
+
 ## Objetivo
 O teste é destinado para vaga de Desenvolvedor Back-end entendo como o candidato efetuou a solução e o raciocinio de criação
 
