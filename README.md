@@ -12,6 +12,21 @@ Para conexão com banco foi utilizado o [TypeORM](https://docs.nestjs.com/recipe
 
 Para documentação da aplicação foi utilizado o [Swagger](https://docs.nestjs.com/openapi/introduction), todos os teste do projeto foi utilizado o swagger para construir as requisições ou seja não será necessário utilizar Postman nem outro deste tipo. Para você utilizar o swagger basta navegar para http://localhost:[porta]/swagger onde [porta] é a porta que colocou no arquivo .env
 
+## Passo a passo para rodar aplicação
+
+1. Executar o comando para instalar as dependencias (melhor versão para instalar no arquivo .npmrc)
+    > `npm i`
+
+2. Criar um arquivo .env na raiz do projeto (existe um .env-example para ver as variaveis necessarias para rodar o projeto).
+
+    > `cp .env-example .env`
+
+3. Substituir os exemplos pelos valores reais de seu local
+
+4. Rodar o comando para da start na aplicação localmente
+
+    > `npm run start:dev`
+
 ## Objetivo
 O teste é destinado para vaga de Desenvolvedor Back-end entendo como o candidato efetuou a solução e o raciocinio de criação
 
