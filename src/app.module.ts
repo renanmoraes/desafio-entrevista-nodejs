@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { EstabilishmentModule } from './controllers/establishment/estabilishment.module';
 import { DatabaseModule } from './core/database/database.module';
 
 @Module({
@@ -17,8 +18,9 @@ import { DatabaseModule } from './core/database/database.module';
       MYSQL_DB: Joi.string().required()
     }),
   }),
-  DatabaseModule],
+    DatabaseModule,
+    EstabilishmentModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

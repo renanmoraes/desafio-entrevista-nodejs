@@ -1,7 +1,7 @@
 
 import { Entity, Column, PrimaryGeneratedColumn, Index } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'estabelecimento' })
 @Index(["cnpj"], { unique: true })
 export class EstablishmentEntity {
 

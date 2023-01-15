@@ -11,7 +11,7 @@ export function databaseConfig(): TypeOrmModuleOptions {
     username: configService.get('MYSQL_USER'),
     password: configService.get('MYSQL_PASSWORD'),
     database: configService.get('MYSQL_DB'),
-    entities: ['src/controllers/**/entity/*entity{.ts,.js}'],
+    autoLoadEntities: true,
     synchronize: true
   };
 }
