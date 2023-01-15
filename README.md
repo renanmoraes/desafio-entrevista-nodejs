@@ -8,7 +8,9 @@ O projeto foi construido com base no framework NestJS além disso foi utilizado 
 
 Para configurações de variaveis de ambiente utilei o [Configuration](https://docs.nestjs.com/techniques/configuration#configuration) Ele é utilizado para fazer a leitura de um arquivo de configuração na raiz do projeto no formator de .env ou yaml (o escolhido para este projeto foi .env)
 
-Para conexão com banco foi utilizado o [TypeORM](https://docs.nestjs.com/recipes/sql-typeorm) conectando em um banco MySQL
+Para conexão com banco foi utilizado o [TypeORM](https://docs.nestjs.com/recipes/sql-typeorm) conectando em um banco MySQL.
+
+Para documentação da aplicação foi utilizado o [Swagger](https://docs.nestjs.com/openapi/introduction), todos os teste do projeto foi utilizado o swagger para construir as requisições ou seja não será necessário utilizar Postman nem outro deste tipo. Para você utilizar o swagger basta navegar para http://localhost:[porta]/swagger onde [porta] é a porta que colocou no arquivo .env
 
 ## Objetivo
 O teste é destinado para vaga de Desenvolvedor Back-end entendo como o candidato efetuou a solução e o raciocinio de criação
