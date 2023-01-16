@@ -9,4 +9,4 @@ import { EstablishmentService } from './establishment.service';
   providers: [EstablishmentService],
   controllers: [EstablishmentController],
 })
-export class EstabilishmentModule {}
+export class EstablishmentModule {}

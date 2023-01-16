@@ -57,7 +57,7 @@ export class UpdateEstablishmentDTO {
     @IsString()
     @MaxLength(2)
     @ApiProperty({ example: 'MG', enum: State, nullable: true })
-    state?: string;
+    state?: State;
 
     @IsOptional()
     @IsString()

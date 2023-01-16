@@ -1,8 +1,7 @@
-
 import { State } from 'src/core/enums/state';
 import { Entity, Column, PrimaryGeneratedColumn, Index } from 'typeorm';
 
-@Entity({ name: 'estabelecimento' })
+@Entity({ name: 'estabelecimentos' })
 @Index(["cnpj"], { unique: true })
 export class EstablishmentEntity {
 
@@ -36,8 +35,8 @@ export class EstablishmentEntity {
     @Column({ type: "varchar", name: "cidade" })
     city: string;
 
-    @Column({ type: "varchar", length: 2, name: "estado", enum: State })
-    state: string;
+    @Column({ type: "enum", name: "estado", enum: State })
+    state: State;
 
     @Column({ type: "varchar", name: "pais" })
     country: string;

@@ -60,7 +60,7 @@ export class CreateEstablishmentDTO {
     @IsString()
     @MaxLength(2)
     @ApiProperty({ example: 'MG', enum: State })
-    state: string;
+    state: State;
 
     @IsNotEmpty()
     @IsString()
