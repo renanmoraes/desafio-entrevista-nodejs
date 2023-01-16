@@ -29,7 +29,7 @@ export class EstablishmentService {
         if (Establishment) {
             return Establishment;
         } else {
-            return new NotFoundException();
+            throw new NotFoundException();
         }
     }
 
@@ -39,13 +39,13 @@ export class EstablishmentService {
         if (savingObject) {
             return savingObject;
         }
-        return new NotFoundException();
+        throw new NotFoundException();
     }
 
     async remove(empresa: number) {
         const deleteResponse = await this.repository.delete(empresa);
         if (!deleteResponse.affected) {
-            return new NotFoundException();
+            throw new NotFoundException();
         }
         return true;
     }
