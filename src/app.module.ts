@@ -4,6 +4,7 @@ import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EstablishmentModule } from './controllers/establishment/establishment.module';
+import { ParkingModule } from './controllers/parking/parking.module';
 import { VehiclesModule } from './controllers/vehicles/vehicles.module';
 import { DatabaseModule } from './core/database/database.module';
 
@@ -21,7 +22,8 @@ import { DatabaseModule } from './core/database/database.module';
   }),
     DatabaseModule,
     EstablishmentModule,
-    VehiclesModule],
+    VehiclesModule,
+    ParkingModule],
   controllers: [AppController],
   providers: [AppService],
 })

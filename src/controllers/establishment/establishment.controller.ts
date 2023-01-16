@@ -5,7 +5,7 @@ import { CreateEstablishmentDTO } from "./interface/establishment.create.dto";
 import { UpdateEstablishmentDTO } from "./interface/establishment.update.dto";
 
 @Controller('establishment')
-@ApiTags('Estabelecimento')
+@ApiTags('Empresa')
 export class EstablishmentController {
     constructor(private readonly service: EstablishmentService) { }
 
