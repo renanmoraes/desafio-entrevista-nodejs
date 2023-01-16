@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, Logger, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as dayjs from "dayjs";
+import calculateHourlyRate from "src/core/utils/calculateHourlyRate";
 import { Repository } from "typeorm";
 import { EstablishmentEntity } from "../establishment/entitty/establishment.entity";
 import { VehiclesEntity } from "../vehicles/entitty/vehicles.entity";
@@ -44,5 +45,20 @@ export class ParkingService {
         createEntry.vehicle = vehicle;
         await this.repository.save(createEntry);
         return createEntry;
+    }
+
+    async departureParking(idParking: number) {
+        let haveEntry = await this.repository.findOneBy({ id: idParking });
+
+        if (!haveEntry)
+            throw new BadRequestException('Vehicle not found in any space');
+
+        if (haveEntry.departureDate)
+            throw new BadRequestException('Vehicle has already left the parking');
+
+        haveEntry.departureDate = dayjs().format('YYYY-MM-DD HH:mm');
+        haveEntry.amount = calculateHourlyRate(haveEntry.entryDate, haveEntry.departureDate);
+        await this.repository.save(haveEntry);
+        return haveEntry
     }
 }

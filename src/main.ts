@@ -3,6 +3,10 @@ import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { Logger } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as dayjs from "dayjs";
+import * as utc from "dayjs/plugin/utc";
+import * as timezone from "dayjs/plugin/timezone";
+
 
 const logger = new Logger('Main');
 
@@ -19,6 +23,11 @@ async function bootstrap() {
   SwaggerModule.setup('swagger', app, document);
 
   app.enableCors();
+
+  dayjs.extend(utc)
+  dayjs.extend(timezone)
+  dayjs.tz.setDefault("America/Sao_Paulo")
+
   await app.listen(configService.get('PORT'), '0.0.0.0');
   logger.log(`Service is listening on port ${configService.get('PORT')}`);
 }

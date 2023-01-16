@@ -17,7 +17,7 @@ export class ParkingEntity {
     @Column({ type: "datetime", name: 'data-saida', nullable: true })
     departureDate: string;
 
-    @Column({ type: "decimal", name: "valor-cobrado", nullable: true })
+    @Column({ type: "decimal", name: "valor-cobrado", nullable: true, precision: 5, scale: 2, })
     amount: number
 
     @ManyToOne(type => EstablishmentEntity, establishment => establishment.id)
