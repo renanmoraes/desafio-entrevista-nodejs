@@ -1,8 +1,8 @@
-import { IsString, IsInt, IsNotEmpty, MaxLength, IsEmpty, MinLength } from 'class-validator';
+import { IsString, IsInt, IsNotEmpty, MaxLength, IsOptional, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { State } from 'src/core/enums/state';
 
-export class Establishment {
+export class CreateEstablishmentDTO {
     @IsNotEmpty()
     @IsString()
     @MinLength(1)
@@ -37,7 +37,7 @@ export class Establishment {
     number: string;
 
     @IsString()
-    @IsEmpty()
+    @IsOptional()
     @ApiProperty({ example: '', nullable: true })
     complement?: string | undefined;
 
