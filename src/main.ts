@@ -18,6 +18,7 @@ async function bootstrap() {
     .setTitle('API Dr Consulta')
     .setDescription('API Rest Dr Consulta v1')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);

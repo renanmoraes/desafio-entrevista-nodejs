@@ -1,9 +1,11 @@
-import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UsePipes, ValidationPipe } from "@nestjs/common";
-import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { EstablishmentService } from "./establishment.service";
 import { CreateEstablishmentDTO } from "./interface/establishment.create.dto";
 import { UpdateEstablishmentDTO } from "./interface/establishment.update.dto";
 
+@ApiBearerAuth()
 @Controller('establishment')
 @ApiTags('Empresa')
 export class EstablishmentController {
@@ -12,6 +14,7 @@ export class EstablishmentController {
     logger = new Logger(EstablishmentController.name);
 
     @Post()
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 201,
@@ -27,6 +30,7 @@ export class EstablishmentController {
     }
 
     @Patch(':id')
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 200,
@@ -42,6 +46,7 @@ export class EstablishmentController {
     }
 
     @Get()
+    @UseGuards(AuthGuard('jwt'))
     @ApiResponse({
         status: 200,
         description: 'Rota responsavel por buscar todos estabelecimento'
@@ -55,6 +60,7 @@ export class EstablishmentController {
     }
 
     @Get(':id')
+    @UseGuards(AuthGuard('jwt'))
     @ApiResponse({
         status: 200,
         description: 'Rota responsavel por buscar um estabelecimento pelo id'
@@ -68,6 +74,7 @@ export class EstablishmentController {
     }
 
     @Delete(':id')
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 200,

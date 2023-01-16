@@ -14,7 +14,7 @@ export class UserController {
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 201,
-        description: 'Rota responsavel por cadastrar um estabelecimento'
+        description: 'Rota responsavel por cadastrar um usuário'
     })
     @ApiResponse({
         status: 400,

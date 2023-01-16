@@ -1,9 +1,11 @@
-import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UsePipes, ValidationPipe } from "@nestjs/common";
-import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
+import { ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { VehiclesService } from "./vehicles.service";
 import { CreateVehiclesDTO } from "./interface/vehicles.create.dto";
 import { UpdateVehiclesDTO } from "./interface/vehicles.update.dto";
+import { AuthGuard } from "@nestjs/passport";
 
+@ApiBearerAuth()
 @Controller('vehicles')
 @ApiTags('Veículos')
 export class VehiclesController {
@@ -12,6 +14,7 @@ export class VehiclesController {
     logger = new Logger(VehiclesController.name);
 
     @Post()
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 201,
@@ -27,6 +30,7 @@ export class VehiclesController {
     }
 
     @Patch(':id')
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 200,
@@ -42,6 +46,7 @@ export class VehiclesController {
     }
 
     @Get()
+    @UseGuards(AuthGuard('jwt'))
     @ApiResponse({
         status: 200,
         description: 'Rota responsavel por buscar todos estabelecimento'
@@ -55,6 +60,7 @@ export class VehiclesController {
     }
 
     @Get(':id')
+    @UseGuards(AuthGuard('jwt'))
     @ApiResponse({
         status: 200,
         description: 'Rota responsavel por buscar um estabelecimento pelo id'
@@ -68,6 +74,7 @@ export class VehiclesController {
     }
 
     @Delete(':id')
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 200,

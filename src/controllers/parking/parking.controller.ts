@@ -1,9 +1,11 @@
-import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UsePipes, ValidationPipe } from "@nestjs/common";
-import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { BadRequestException, Body, Controller, Delete, Get, Logger, Param, Patch, Post, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
+import { ApiBearerAuth, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ParkingEntity } from "./entitty/parking.entity";
 import { EntryParkingDTO } from "./interface/parking.entry.dto";
 import { ParkingService } from "./parking.service";
 
+@ApiBearerAuth()
 @Controller('parking')
 @ApiTags('Estacionamento')
 export class ParkingController {
@@ -12,6 +14,7 @@ export class ParkingController {
     logger = new Logger(ParkingController.name);
 
     @Post('entry')
+    @UseGuards(AuthGuard('jwt'))
     @UsePipes(ValidationPipe)
     @ApiResponse({
         status: 201,
@@ -39,6 +42,7 @@ export class ParkingController {
     }
 
     @Post('departure/:idParking')
+    @UseGuards(AuthGuard('jwt'))
     @ApiResponse({
         status: 201,
         description: 'Vehicle with output updated successfully'
