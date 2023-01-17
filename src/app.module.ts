@@ -7,6 +7,7 @@ import { AppService } from './app.service';
 import { AuthorizationModule } from './controllers/authorization/authorization.module';
 import { EstablishmentModule } from './controllers/establishment/establishment.module';
 import { ParkingModule } from './controllers/parking/parking.module';
+import { ReportsModule } from './controllers/reports/reports.module';
 import { UserModule } from './controllers/user/user.module';
 import { VehiclesModule } from './controllers/vehicles/vehicles.module';
 import { DatabaseModule } from './core/database/database.module';
@@ -27,11 +28,13 @@ import { JwtStrategy } from './core/utils/Jwt';
       }),
     }),
     DatabaseModule,
+    AuthorizationModule,
+    UserModule,
     EstablishmentModule,
     VehiclesModule,
     ParkingModule,
-    UserModule,
-    AuthorizationModule],
+    ReportsModule,
+    ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy],
 })
