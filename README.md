@@ -91,7 +91,7 @@ $ gcloud run deploy
 
 O deploy foi feito utilizando Cloud Deploy, Cloud Registry e Cloud Actefectory (este ultimo é atualização do cloud registry)
 
-Para acessar o site basta clicar no link. [API Produção](https://desafio-entrevista-nodejs-bvrsnczorq-uc.a.run.app/swagger)
+<s>Para acessar o site basta clicar no link. [API Produção](https://desafio-entrevista-nodejs-bvrsnczorq-uc.a.run.app/swagger)</s> (Foi removido por prevenção de custo.
 
 Para melhor dinamizar o teste disponibilizei um banco SQL na Google Cloud, ou seja o sistema esta funcionando todo em cloud da google.
 
